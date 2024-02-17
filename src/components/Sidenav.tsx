@@ -20,9 +20,26 @@ const SideNavVariant = cva(
       },
       open: {
         true: "",
-        false: "w-[0px]",
+        false: "",
       },
     },
+    compoundVariants: [
+      {
+        side: "bottom",
+        open: false,
+        className: " h-[0px]",
+      },
+      {
+        side: "left",
+        open: false,
+        className: "w-[0px]",
+      },
+      {
+        side: "right",
+        open: false,
+        className: "w-[0px]",
+      },
+    ],
     defaultVariants: {
       side: "left",
       open: true,
