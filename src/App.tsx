@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./components/Button";
-import { SideNav } from "./components/Sidenav";
+import { Panel } from "./components/Panel";
 import {
   ArrowLeftToLine,
   ArrowRightToLine,
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="max-w-screen flex">
-      <SideNav side="left" open={isLeftNavOpen}>
+      <Panel side="left" open={isLeftNavOpen}>
         <Button
           size={"icon"}
           className="ml-auto"
@@ -25,13 +25,13 @@ function App() {
         >
           <ArrowLeftToLine size={16} />
         </Button>
-        <Button>Item1</Button>
-      </SideNav>
+        <Button className="justify-start">Item1</Button>
+      </Panel>
       <div className="relative flex w-full flex-col">
         {!isLeftNavOpen && (
           <Button
             size={"icon"}
-            className="absolute left-0 top-0"
+            className="absolute left-2 top-2"
             onClick={() => {
               setIsLeftNavOpen(!isLeftNavOpen);
             }}
@@ -42,7 +42,7 @@ function App() {
         {!isBottomNavOpen && (
           <Button
             size={"icon"}
-            className="absolute bottom-0 right-0 ml-auto"
+            className="absolute bottom-2 right-2 ml-auto"
             onClick={() => {
               setIsBottomNavOpen(!isBottomNavOpen);
             }}
@@ -53,7 +53,7 @@ function App() {
         {!isRightNavOpen && (
           <Button
             size={"icon"}
-            className="absolute right-0 top-0"
+            className="absolute right-2 top-2"
             onClick={() => {
               setIsRightNavOpen(!isRightNavOpen);
             }}
@@ -62,7 +62,7 @@ function App() {
           </Button>
         )}
         <div className="flex h-full w-full justify-center">ads</div>
-        <SideNav side="bottom" open={isBottomNavOpen}>
+        <Panel side="bottom" open={isBottomNavOpen}>
           <Button
             size={"icon"}
             className="ml-auto"
@@ -73,9 +73,9 @@ function App() {
             <ArrowDownToLine size={16} />
           </Button>{" "}
           <Button>Item1</Button>
-        </SideNav>
+        </Panel>
       </div>
-      <SideNav side="right" open={isRightNavOpen}>
+      <Panel side="right" open={isRightNavOpen}>
         <Button
           size={"icon"}
           onClick={() => {
@@ -85,7 +85,7 @@ function App() {
           <ArrowRightToLine size={16} />
         </Button>{" "}
         <Button>Item1</Button>
-      </SideNav>
+      </Panel>
     </div>
   );
 }

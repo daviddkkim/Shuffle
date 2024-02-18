@@ -2,15 +2,15 @@ import * as React from "react";
 import { cn } from "../utils/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-interface SideNavProps
+interface PanelProps
   extends React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLElement>,
-      HTMLElement
+      React.HTMLAttributes<HTMLDivElement>,
+      HTMLDivElement
     >,
-    VariantProps<typeof SideNavVariant> {}
+    VariantProps<typeof PanelVariant> {}
 
-const SideNavVariant = cva(
-  "flex h-screen w-[200px] flex-col gap-1 bg-white text-black dark:bg-black dark:text-white relative transition-all overflow-x-hidden",
+const PanelVariant = cva(
+  "flex shadow-sm h-screen w-[200px] flex-col gap-1 bg-white text-black dark:bg-black dark:text-white relative transition-all overflow-x-hidden p-2",
   {
     variants: {
       side: {
@@ -27,17 +27,17 @@ const SideNavVariant = cva(
       {
         side: "bottom",
         open: false,
-        className: " h-[0px]",
+        className: " h-[0px] p-0",
       },
       {
         side: "left",
         open: false,
-        className: "w-[0px]",
+        className: "w-[0px] p-0",
       },
       {
         side: "right",
         open: false,
-        className: "w-[0px]",
+        className: "w-[0px] p-0",
       },
     ],
     defaultVariants: {
@@ -47,20 +47,20 @@ const SideNavVariant = cva(
   },
 );
 
-const SideNav = React.forwardRef<HTMLElement, SideNavProps>(
+const Panel = React.forwardRef<HTMLDivElement, PanelProps>(
   ({ className, children, side, open, ...props }, ref) => {
     return (
-      <nav
-        className={cn(SideNavVariant({ side, className, open }))}
+      <div
+        className={cn(PanelVariant({ side, className, open }))}
         ref={ref}
         {...props}
       >
         {children}
-      </nav>
+      </div>
     );
   },
 );
 
-SideNav.displayName = "SideNav";
+Panel.displayName = "Panel";
 
-export { SideNav };
+export { Panel };
